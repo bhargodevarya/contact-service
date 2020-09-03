@@ -1,2 +1,2 @@
-node_modules
-contact_*.json
+*/node_modules
+*/contact_*.json
