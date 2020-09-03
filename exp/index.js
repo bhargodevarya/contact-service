@@ -24,7 +24,7 @@ fs.writeFile(fileRef, contactStrObject, (err, data) => {
     console.log("Error writing file", err);
   } else {
     console.log("Success");
-    var uploadParams = { Bucket: "portfolio-data-bucket", Key: "", Body: "" };
+    var uploadParams = { Bucket: "dc-contact-bucket", Key: "", Body: "" };
 
     // Configure the file stream and obtain the upload parameters
     var fileStream = fs.createReadStream(fileRef);
