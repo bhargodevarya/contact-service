@@ -1,0 +1,23 @@
+{
+  "name": "contact-service",
+  "version": "1.0.0",
+  "description": "Service to handle the contact form of the portfolio application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhargodevarya/contact-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhargodevarya/contact-service/issues"
+  },
+  "homepage": "https://github.com/bhargodevarya/contact-service#readme",
+  "dependencies": {
+    "aws-sdk": "^2.744.0"
+  }
+}
