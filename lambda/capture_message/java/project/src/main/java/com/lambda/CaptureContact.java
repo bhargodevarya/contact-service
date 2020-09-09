@@ -12,6 +12,8 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CaptureContact implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
@@ -27,6 +29,11 @@ public class CaptureContact implements RequestHandler<APIGatewayProxyRequestEven
         PutObjectResult putObjectResult = amazonS3Client.putObject("dc-contact-bucket",
                 "contact_".concat(time).concat(".json"), requestBody);
         apiGatewayProxyResponseEvent.setBody("Created file");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Access-Control-Allow-Headers","Content-Type");
+        headers.put("Access-Control-Allow-Origin","*");
+        headers.put("Access-Control-Allow-Methods","OPTIONS,POST,GET");
+        apiGatewayProxyResponseEvent.setHeaders(headers);
         return apiGatewayProxyResponseEvent;
     }
 }
