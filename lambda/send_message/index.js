@@ -23,15 +23,16 @@ exports.handler = async (event, context) => {
 
   try {
     const { Body } = await s3.getObject(params).promise();
-    console.log("BODY", JSON.parse(Body.toString()));
+    const contactObject = JSON.parse(Body.toString())
+    console.log("BODY", contactObject);
     const topicArn = "arn:aws:sns:us-east-1:259061874013:Contact_topic";
     const snsPayload = {
-      Message: Body.toString(),
-      Subject: "Contact for portfolio",
+      Message: `${contactObject.name} has sent you the message - ${contactObject.message}`,
+      Subject: "Contact - ".concat(contactObject.subject),
       TopicArn: topicArn,
     };
     const { MessageId } = await sns.publish(snsPayload).promise();
-    console.log(">>>> ", MessageId)
+    console.log("Message sent to topic, messageId is", MessageId)
     // publishTextPromise.then(
     //     function(data) {
     //       console.log(`Message ${snsPayload.Message} send sent to the topic ${snsPayload.TopicArn}`);
